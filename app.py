@@ -4,6 +4,7 @@ from line_bot_api import *
 
 
 app = Flask(__name__)
+app.config.from_object(os.environ.get("APP_SETTINGS", "config.DevConfig"))
 
 @app.route("/callback", methods = ['POST'])
 def callback():
