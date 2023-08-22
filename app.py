@@ -25,7 +25,7 @@ def callback():
 def handle_follow(event):
 
     # LineBot加入不同的環境(群組or好友)時的狀況
-    if event.source.type == Event.SOURCE_GROUP:
+    if event.source.type == 'group':
         
         # 加入群組時的回復內容
         msg = '''歡迎加入群組'''    #這段要改，只是我目前懶得想歡迎詞
@@ -34,7 +34,7 @@ def handle_follow(event):
             TextSendMessage(text=msg)
         )
 
-    elif event.source.type == Event.SOURCE_USER:
+    elif event.source.type == 'user':
         
         # 加入好友時的回復內容
         msg = '''歡迎加入好友'''    #這段要改，只是我目前懶得想歡迎詞
@@ -42,6 +42,7 @@ def handle_follow(event):
             event.reply_token,
             TextSendMessage(text=msg)
         )
+
 
 # 文字訊息處理器(每次收到文字訊息時的動作)
 @handler.add(MessageEvent, message=TextMessage)
