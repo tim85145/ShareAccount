@@ -24,6 +24,7 @@ def callback():
 @handler.add(FollowEvent)
 def handle_follow(event):
 
+    print(event.source.type)
     # LineBot加入不同的環境(群組or好友)時的狀況
     if event.source.type == 'group':
         
