@@ -1,6 +1,7 @@
 from flask import Flask, request, abort
 
 from line_bot_api import *
+from share_account import *
 
 
 app = Flask(__name__)
@@ -45,20 +46,23 @@ def handle_join(event):
 # 文字訊息處理器(每次收到文字訊息時的動作)
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
+    message_text = str(event.mwssage.text).lower()
+    if message_text == '開始分帳':
+        if event.source.type == 'user':
+            msg = '我現在是你的好友'
+            line_bot_api.reply_message(
+                event.reply_token,
+                TextSendMessage(text=msg)
+            )
 
-    if event.source.type == 'user':
-        msg = '我現在是你的好友'
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text=msg)
-        )
+        elif event.source.type == 'group':
+            group_share(event)
 
-    elif event.source.type == 'group':
-        msg = '我現在是群組的一員'
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text=msg)
-        )
+            msg = '我現在是群組的一員'
+            line_bot_api.reply_message(
+                event.reply_token,
+                TextSendMessage(text=msg)
+            )
 
 
 
