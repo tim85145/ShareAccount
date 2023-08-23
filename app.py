@@ -46,7 +46,7 @@ def handle_join(event):
 # 文字訊息處理器(每次收到文字訊息時的動作)
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    message_text = str(event.mwssage.text).lower()
+    message_text = str(event.message.text).lower()
     if message_text == '開始分帳':
         if event.source.type == 'user':
             msg = '我現在是你的好友'
