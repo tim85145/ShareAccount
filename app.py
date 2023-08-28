@@ -56,13 +56,12 @@ def handle_message(event):
             )
 
         elif event.source.type == 'group':
-            group_share(event)
-
             msg = '我現在是群組的一員'
             line_bot_api.reply_message(
                 event.reply_token,
                 TextSendMessage(text=msg)
             )
+            group_share(event)
 
 
 
