@@ -1,5 +1,5 @@
 from urllib.parse import parse_qsl, quote
-import requests, json
+import requests
 
 from models.user import Users
 from database import db_session
@@ -52,12 +52,12 @@ def get_share_member_from_line_user(event):
     }
     payload = {
         'to': recipient_id,
-        'messages': [{'type': 'text', 'text':'觸發互動消息'}],
         'notificationDisabled': False,
         'uri': oa_message_uri,
     }
+    # 'messages': [{'type': 'text', 'text':'觸發互動消息'}],
     
-    response = requests.post('https://api.line.me/v2/bot/message/push', headers=headers, data=json.dumps(payload).encode('utf-8'))
+    response = requests.post('https://api.line.me/v2/bot/message/push', headers=headers, json=payload)
     if response.status_code == 200:
         print('互動消息已觸發成功')
     else:
