@@ -2,6 +2,7 @@ from flask import Flask, request, abort
 
 from line_bot_api import *
 from share_account import *
+from database import init_db
 
 
 app = Flask(__name__)
@@ -48,22 +49,27 @@ def handle_join(event):
 def handle_message(event):
     message_text = str(event.message.text).lower()
     if message_text == '開始分帳':
+        msg = '請告訴我要分帳的有哪些人。'
         if event.source.type == 'user':
-            msg = '我現在是你的好友'
+            # msg = '我現在是你的好友'
             line_bot_api.reply_message(
                 event.reply_token,
                 TextSendMessage(text=msg)
             )
+            get_share_member_from_line_user(event)
 
         elif event.source.type == 'group':
-            msg = '我現在是群組的一員'
+            # msg = '我現在是群組的一員'
             line_bot_api.reply_message(
                 event.reply_token,
                 TextSendMessage(text=msg)
             )
-            group_share(event)
+            get_share_member_from_line_group(event)
+    elif '要分帳的人有：' in message_text:
+        pass
 
 
 
 if __name__ == '__main__':
+    init_db()
     app.run()
