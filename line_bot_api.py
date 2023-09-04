@@ -12,6 +12,8 @@ from linebot.models import (MessageEvent, TextMessage, FollowEvent, JoinEvent, T
 ChannelSecret = '810d353ee2085438f1bd57484ab8de89'
 #調用Line Bot的Messagr API，取得路徑：Messaging API -> Channel access token
 ChannelAccessToken = 'k6lNLdluZ7iQNGc4bgfhK5Aj7eoVUF7HsPqjYYDUv/yirvy59vs5sjlWJ7h4M/L3xRryRnKFzrGtMSLYSPpxPPGq1zIBpet5EkFF2iN1vYg3z/apw3TvShB+jWARRLJivsRx8a0I/Tlmq7CasOESqAdB04t89/1O/w1cDnyilFU='
+# Messaging API -> Line Bot Basic ID
+base_id = '@429bgams'
 
 handler = WebhookHandler(ChannelSecret)
 line_bot_api = LineBotApi(ChannelAccessToken)

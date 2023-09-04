@@ -44,7 +44,6 @@ def get_share_member_from_line_user(event):
     # 預期能在使用者的輸入框放入一些文字
     print('這則訊息代表確保有進到這裡:)')
     pre_text = '123測試'
-    base_id = '@429bgams'
     encoded_message = quote(pre_text)
     oa_message_uri = f'line://oaMessage/{base_id}/?{encoded_message}'
     recipient_id = event.source.user_id
@@ -52,7 +51,7 @@ def get_share_member_from_line_user(event):
         'Authorization': f'Bearer {ChannelAccessToken}'
     }
     payload = {
-        'to': recipient_id,
+        'to': base_id,
         'messages': [{'type': 'text', 'text':'觸發互動消息'}],
         'notificationDisabled': False,
         'uri': oa_message_uri,
