@@ -63,8 +63,12 @@ def get_share_member_from_line_user(event):
         print('互動消息觸發失敗: ', response.status_code, response.text)
     
     print('===============')
-    requests.post('https://line.me/R/oaMessage/@429bgams/要發送的訊息')
-
+    response = requests.post('https://line.me/R/oaMessage/@429bgams/要發送的訊息')
+    if response.status_code == 200:
+        print('互動消息已觸發成功')
+    else:
+        print('互動消息觸發失敗: ', response.status_code, response.text)
+    print('===============....')
     # message_text = str(event.message.text).lower()
     # user = get_or_create_user(event.source.user_id)
     
