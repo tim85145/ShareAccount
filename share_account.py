@@ -47,10 +47,12 @@ def get_share_member_from_line_user(event):
     base_id = '@429bgams'
     encoded_message = quote(pre_text)
     oa_message_uri = f'line://oaMessage/{base_id}/?{encoded_message}'
+    recipient_id = event.source.user_id
     headers = {
         'Authorization': f'Bearer {ChannelAccessToken}'
     }
     payload = {
+        'to': recipient_id,
         'messages': [{'type': 'text', 'text':'觸發互動消息'}],
         'notificationDisabled': False,
         'uri': oa_message_uri,
