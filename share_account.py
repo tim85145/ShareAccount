@@ -42,7 +42,6 @@ def get_share_member_from_line_group(event):
 
 def get_share_member_from_line_user(event):
     # 預期能在使用者的輸入框放入一些文字
-    print('這則訊息代表確保有進到這裡:)')
     pre_text = '123測試'
     encoded_message = quote(pre_text)
     oa_message_uri = f'line://oaMessage/{base_id}/?{encoded_message}'
@@ -51,17 +50,20 @@ def get_share_member_from_line_user(event):
         'Authorization': f'Bearer {ChannelAccessToken}'
     }
     payload = {
+        'messages': [{'type': 'text', 'text':'觸發互動消息'}],
         'to': recipient_id,
         'notificationDisabled': False,
         'uri': oa_message_uri,
     }
-    # 'messages': [{'type': 'text', 'text':'觸發互動消息'}],
     
     response = requests.post('https://api.line.me/v2/bot/message/push', headers=headers, json=payload)
     if response.status_code == 200:
         print('互動消息已觸發成功')
     else:
         print('互動消息觸發失敗: ', response.status_code, response.text)
+    
+    print('===============')
+    requests.post('https://line.me/R/oaMessage/@429bgams/要發送的訊息')
 
     # message_text = str(event.message.text).lower()
     # user = get_or_create_user(event.source.user_id)
