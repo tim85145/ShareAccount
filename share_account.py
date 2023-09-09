@@ -54,6 +54,7 @@ def get_item_price(event):
 
 def list_all_function(event):
     pass
+"""
     functions = {'分帳功能':'開始分帳'}
     # base_id = '@429bgams'
     pre_message = '要分帳的人有: '
@@ -108,7 +109,7 @@ def list_all_function(event):
     line_bot_api.reply_message(
         event.reply_token,
         [flex_message])
-
+"""
         
 """
 # 預期能在使用者的輸入框放入一些文字
