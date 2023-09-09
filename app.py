@@ -23,8 +23,6 @@ def callback():
 
     return 'OK'
 
-print('222222222222222222222222222222222222222222222')
-
 # 初始化事件處理器(也就是每次加入LineBot時做的事情，包含封鎖及解封)
 @handler.add(FollowEvent)
 def handle_follow(event):
@@ -72,7 +70,6 @@ def handle_message(event):
         print('****************************************')
         list_all_function(event)
 
-print('4444444444444444444444444444444444444444444444')
 @handler.add(PostbackEvent)
 def handle_postback(event):
     data = dict(parse_qsl(event.postback.data))
@@ -81,5 +78,7 @@ def handle_postback(event):
 
 
 if __name__ == '__main__':
+    print('222222222222222222222222222')
     init_db()
+    print('444444444444444444444444444')
     app.run()
