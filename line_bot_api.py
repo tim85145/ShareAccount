@@ -1,6 +1,7 @@
 from linebot import LineBotApi, WebhookHandler  #連接Line Bot的兩個函數
 from linebot.exceptions import InvalidSignatureError, LineBotApiError
-from linebot.models import (MessageEvent, TextMessage, FollowEvent, JoinEvent, TextSendMessage, PostbackEvent)
+from linebot.models import (MessageEvent, TextMessage, FollowEvent, JoinEvent, TextSendMessage, 
+                            PostbackEvent, FlexSendMessage)
 # from linebot.models import (MessageEvent, TextMessage, TextSendMessage, FollowEvent, UnfollowEvent, 
 #                             StickerSendMessage, ImageSendMessage, LocationSendMessage, FlexSendMessage,
 #                             TemplateSendMessage, ImageCarouselTemplate, ImageCarouselColumn, PostbackAction,
