@@ -63,7 +63,6 @@ def list_all_function(event):
         
         bubble = {
             "type": "bubble",
-            "hero": {},
             "body": {
                 "type": "box",
                 "layout": "vertical",
@@ -79,16 +78,13 @@ def list_all_function(event):
             "footer": {
                 "type": "box",
                 "layout": "vertical",
-                "spacing": "sm",
                 "contents": [
                 {
                     "type": "button",
-                    "style": "link",
-                    "height": "sm",
                     "action": {
-                    "type": "uri",
-                    "label": "開始分帳",
-                    "uri": "line://oaMessage/@429bgams/test"
+                        "type": "uri",
+                        "label": "開始分帳",
+                        "uri": "line://oaMessage/@429bgams/test"
                     }
                 }
                 ]
@@ -103,8 +99,7 @@ def list_all_function(event):
             "type": "carousel",
             "contents": bubbles
         })
-    print(type(flex_message))
-
+    
     line_bot_api.reply_message(
         event.reply_token,
         [flex_message])
