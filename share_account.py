@@ -41,7 +41,12 @@ def get_share_member_from_line_group(event):
     else:
         print('取得群組成員ID列表失敗!!')
 
-def get_share_member_from_line_user(event):
+def get_share_member_from_line_user(message_text):
+    share_list = message_text.split('：')[1].split(' ')
+    print(str(share_list))
+    
+
+    """
     # 預期能在使用者的輸入框放入一些文字
     pre_text = '123測試'
     encoded_message = quote(pre_text)
@@ -68,7 +73,7 @@ def get_share_member_from_line_user(event):
     url = 'https://line.me/R/oaMessage/@429bgams/要發送的訊息'
     webbrowser.open(url)
 
-    """
+    
     response = requests.post('https://line.me/R/oaMessage/@429bgams/要發送的訊息')
     if response.status_code == 200:
         print('互動消息已觸發成功')

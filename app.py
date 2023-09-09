@@ -50,23 +50,19 @@ def handle_message(event):
     message_text = str(event.message.text).lower()
     if message_text == '~開始分帳~':
         msg = '請告訴我要分帳的有哪些人。'
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=msg)
+        )
+            
+    elif '要分帳的人有：' in message_text:
         if event.source.type == 'user':
-            # msg = '我現在是你的好友'
-            line_bot_api.reply_message(
-                event.reply_token,
-                TextSendMessage(text=msg)
-            )
-            get_share_member_from_line_user(event)
+            share_list = get_share_member_from_line_user(message_text)
+            
+            print(str(share_list))
 
         elif event.source.type == 'group':
-            # msg = '我現在是群組的一員'
-            line_bot_api.reply_message(
-                event.reply_token,
-                TextSendMessage(text=msg)
-            )
             get_share_member_from_line_group(event)
-    elif '要分帳的人有：' in message_text:
-        pass
 
 
 
