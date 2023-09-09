@@ -64,8 +64,8 @@ def handle_message(event):
         elif event.source.type == 'group':
             get_share_member_from_line_group(event)
     
-    # elif message_text == '~有哪些功能~':
-    #     list_all_function(event)
+    elif message_text == '~有哪些功能~':
+        list_all_function(event)
 
 @handler.add(PostbackEvent)
 def handle_postback(event):
