@@ -48,7 +48,7 @@ def handle_join(event):
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     message_text = str(event.message.text).lower()
-    if message_text == '開始分帳':
+    if message_text == '~開始分帳~':
         msg = '請告訴我要分帳的有哪些人。'
         if event.source.type == 'user':
             # msg = '我現在是你的好友'
