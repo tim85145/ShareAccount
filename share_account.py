@@ -60,6 +60,8 @@ def list_all_function(event):
 
     for function in functions:
         label = functions[function]
+        print(function)
+        print(functions)
         """
         bubble = {
             "type": "bubble",
