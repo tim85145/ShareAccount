@@ -100,13 +100,11 @@ def list_all_function(event):
         contents={
             'type': 'carousel',
             'contents': bubbles
-        }
-    )
+        })
     
     line_bot_api.reply_message(
         event.reply_token,
-        [flex_message]
-    )
+        [flex_message])
 
     """
     # 預期能在使用者的輸入框放入一些文字
