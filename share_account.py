@@ -69,7 +69,7 @@ def list_all_function(event):
                 "contents": [
                 {
                     "type": "text",
-                    "text": "分帳功能",
+                    "text": function,
                     "weight": "bold",
                     "size": "xl"
                 }
@@ -83,7 +83,7 @@ def list_all_function(event):
                     "type": "button",
                     "action": {
                         "type": "uri",
-                        "label": "開始分帳",
+                        "label": label,
                         "uri": "line://oaMessage/@429bgams/test"
                     }
                 }
