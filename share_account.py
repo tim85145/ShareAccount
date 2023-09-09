@@ -44,6 +44,8 @@ def get_share_member_from_line_group(event):
 def get_share_member_from_line_user(message_text):
     share_list = message_text.split('：')[1].split(' ')
     print(str(share_list))
+    for user_id in share_list:
+        get_or_create_user(user_id)
     
 
     """
