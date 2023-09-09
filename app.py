@@ -5,11 +5,11 @@ from share_account import *
 from database import init_db
 
 
-print('11111111111111111111111111111111111111111111')
 app = Flask(__name__)
 
 @app.route("/callback", methods = ['POST'])
 def callback():
+    print('11111111111111111111111111111111111111111111')
     signature = request.headers["X-Line-Signature"]
 
     body = request.get_data(as_text=True)
@@ -45,11 +45,12 @@ def handle_join(event):
         event.reply_token,
         TextSendMessage(text=msg)
     )
-print('3333333333333333333333333333333333333333333')
+
 
 # 文字訊息處理器(每次收到文字訊息時的動作)
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
+    print('3333333333333333333333333333333333333333333')
     message_text = str(event.message.text).lower()
     if message_text == '~開始分帳~':
         msg = '請告訴我要分帳的有哪些人。'
