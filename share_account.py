@@ -53,13 +53,12 @@ def get_item_price(event):
     price = message_text[1]
 
 def list_all_function(event):
-    pass
-"""
     functions = {'分帳功能':'開始分帳'}
     # base_id = '@429bgams'
     pre_message = '要分帳的人有: '
     bubbles = []
     print('===========================================')
+    """
     for function in functions:
         label = functions[function]
         bubble = {
