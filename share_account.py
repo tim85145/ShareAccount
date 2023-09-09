@@ -63,6 +63,7 @@ def list_all_function(event):
         
         bubble = {
             "type": "bubble",
+            "hero": {},
             "body": {
                 "type": "box",
                 "layout": "vertical",
@@ -90,23 +91,23 @@ def list_all_function(event):
                     "uri": "line://oaMessage/@429bgams/test"
                     }
                 }
-                ],
-                "flex": 0
+                ]
             }
         } 
 
         bubbles.append(bubble)
     
-    # flex_message = FlexSendMessage(
-    #     alt_text='請選擇要使用的功能',
-    #     contents={
-    #         "type": "carousel",
-    #         "contents": bubbles
-    #     })
+    flex_message = FlexSendMessage(
+        alt_text='請選擇要使用的功能',
+        contents={
+            "type": "carousel",
+            "contents": bubbles
+        })
+    print(type(flex_message))
 
     line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text='test'))
+        [flex_message])
     """
     line_bot_api.reply_message(
         event.reply_token,
