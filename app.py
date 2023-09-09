@@ -55,7 +55,7 @@ def handle_message(event):
             TextSendMessage(text=msg)
         )
             
-    elif '要分帳的人有：' in message_text:
+    elif '要分帳的人有: ' in message_text:
         if event.source.type == 'user':
             share_list = get_share_member_from_line_user(message_text)
             
@@ -63,7 +63,15 @@ def handle_message(event):
 
         elif event.source.type == 'group':
             get_share_member_from_line_group(event)
+    
+    elif message_text == '~有哪些功能~':
+        list_all_function(event)
 
+@handler.add(PostbackEvent)
+def handle_postback(event):
+    data = dict(parse_qsl(event.postback.data))
+    if data.get('action') == 'item_price':
+        get_item_price(event)
 
 
 if __name__ == '__main__':

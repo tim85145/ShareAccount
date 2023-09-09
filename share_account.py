@@ -42,11 +42,71 @@ def get_share_member_from_line_group(event):
         print('取得群組成員ID列表失敗!!')
 
 def get_share_member_from_line_user(message_text):
-    share_list = message_text.split('：')[1].split(' ')
+    share_list = message_text.split(':')[1].split(' ')
     print(str(share_list))
     for user_id in share_list:
         get_or_create_user(user_id)
+
+def get_item_price(event):
+    message_text = str(event.message.text).lower().split(' ')
+    item = message_text[0]
+    price = message_text[1]
     
+def list_all_function(event):
+    functions = {'分帳功能':'開始分帳'}
+    base_id = '@429bgams'
+    pre_message = '要分帳的人有: '
+    bubbles = []
+    for function in functions:
+        bubble = {
+            "type": "bubble",
+            "direction": "ltr",
+            "body": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                {
+                    "type": "text",
+                    "text": function,
+                    "weight": "bold",
+                    "size": "xl"
+                }
+                ]
+            },
+            "footer": {
+                "type": "box",
+                "layout": "horizontal",
+                "spacing": "sm",
+                "contents": [
+                {
+                    "type": "button",
+                    "style": "link",
+                    "height": "sm",
+                    "action": {
+                    "type": "uri",
+                    "label": functions[function],
+                    "uri": f"line://oaMessage/{base_id}/{pre_message}"
+                    }
+                }
+                ],
+                "flex": 0
+            }
+        }
+
+        bubbles.append(bubble)
+
+    flex_message = FlexSendMessage(
+        alt_text='請選擇要使用的功能',
+        contents={
+            'type': 'carousel',
+            'contents': bubbles
+        }
+    )
+    
+    line_bot_api.reply_message(
+        event.reply_token,
+        [flex_message]
+    )
 
     """
     # 預期能在使用者的輸入框放入一些文字
