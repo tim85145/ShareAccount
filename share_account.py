@@ -63,7 +63,6 @@ def list_all_function(event):
         
         bubble = {
             "type": "bubble",
-            "direction": "ltr",
             "body": {
                 "type": "box",
                 "layout": "vertical",
@@ -78,7 +77,7 @@ def list_all_function(event):
             },
             "footer": {
                 "type": "box",
-                "layout": "horizontal",
+                "layout": "vertical",
                 "spacing": "sm",
                 "contents": [
                 {
@@ -88,13 +87,13 @@ def list_all_function(event):
                     "action": {
                     "type": "uri",
                     "label": "開始分帳",
-                    "uri": "line://oaMessage/@429bgams/要分帳的人有:"
+                    "uri": "line://oaMessage/@429bgams/test"
                     }
                 }
                 ],
                 "flex": 0
             }
-            }
+        } 
 
         bubbles.append(bubble)
     
