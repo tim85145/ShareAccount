@@ -107,12 +107,7 @@ def list_all_function(event):
 
     line_bot_api.reply_message(
         event.reply_token,
-        FlexSendMessage(
-            alt_text='請選擇要使用的功能',
-            contents={
-                "type": "carousel",
-                "contents": bubbles
-            }))
+        TextSendMessage(text='test'))
     """
     line_bot_api.reply_message(
         event.reply_token,
