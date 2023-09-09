@@ -57,6 +57,7 @@ def list_all_function(event):
     # base_id = '@429bgams'
     pre_message = '要分帳的人有: '
     bubbles = []
+    print('===========================================')
     for function in functions:
         label = functions[function]
         bubble = {
