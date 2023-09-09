@@ -65,6 +65,7 @@ def handle_message(event):
             get_share_member_from_line_group(event)
     
     elif message_text == '~有哪些功能~':
+        print('****************************************')
         list_all_function(event)
 
 @handler.add(PostbackEvent)
