@@ -60,10 +60,10 @@ def list_all_function(event):
 
     for function in functions:
         label = functions[function]
-        print(function)
-        print(functions)
-        print(label)
-        """
+        print(type(function))
+        print(type(functions))
+        print(type(label))
+        
         bubble = {
             "type": "bubble",
             "direction": "ltr",
@@ -100,7 +100,7 @@ def list_all_function(event):
         }
 
         bubbles.append(bubble)
-
+    """
     flex_message = FlexSendMessage(
         alt_text='請選擇要使用的功能',
         contents={
