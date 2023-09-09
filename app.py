@@ -23,6 +23,8 @@ def callback():
 
     return 'OK'
 
+print('222222222222222222222222222222222222222222222')
+
 # 初始化事件處理器(也就是每次加入LineBot時做的事情，包含封鎖及解封)
 @handler.add(FollowEvent)
 def handle_follow(event):
@@ -43,7 +45,7 @@ def handle_join(event):
         event.reply_token,
         TextSendMessage(text=msg)
     )
-
+print('3333333333333333333333333333333333333333333')
 
 # 文字訊息處理器(每次收到文字訊息時的動作)
 @handler.add(MessageEvent, message=TextMessage)
@@ -69,6 +71,7 @@ def handle_message(event):
         print('****************************************')
         list_all_function(event)
 
+print('4444444444444444444444444444444444444444444444')
 @handler.add(PostbackEvent)
 def handle_postback(event):
     data = dict(parse_qsl(event.postback.data))
