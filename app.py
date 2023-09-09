@@ -5,6 +5,7 @@ from share_account import *
 from database import init_db
 
 
+print('11111111111111111111111111111111111111111111')
 app = Flask(__name__)
 
 @app.route("/callback", methods = ['POST'])
