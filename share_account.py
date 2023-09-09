@@ -98,16 +98,21 @@ def list_all_function(event):
 
         bubbles.append(bubble)
     
-    flex_message = FlexSendMessage(
-        alt_text='請選擇要使用的功能',
-        contents={
-            "type": "carousel",
-            "contents": bubbles
-        })
+    # flex_message = FlexSendMessage(
+    #     alt_text='請選擇要使用的功能',
+    #     contents={
+    #         "type": "carousel",
+    #         "contents": bubbles
+    #     })
 
     line_bot_api.reply_message(
         event.reply_token,
-        [flex_message])
+        FlexSendMessage(
+            alt_text='請選擇要使用的功能',
+            contents={
+                "type": "carousel",
+                "contents": bubbles
+            }))
     """
     line_bot_api.reply_message(
         event.reply_token,
