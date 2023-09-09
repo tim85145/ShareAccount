@@ -60,9 +60,6 @@ def list_all_function(event):
 
     for function in functions:
         label = functions[function]
-        print(type(function))
-        print(type(functions))
-        print(type(label))
         
         bubble = {
             "type": "bubble",
@@ -73,7 +70,7 @@ def list_all_function(event):
                 "contents": [
                 {
                     "type": "text",
-                    "text": function,
+                    "text": "分帳功能",
                     "weight": "bold",
                     "size": "xl"
                 }
@@ -90,14 +87,14 @@ def list_all_function(event):
                     "height": "sm",
                     "action": {
                     "type": "uri",
-                    "label": label,
-                    "uri": f"line://oaMessage/{base_id}/{pre_message}"
+                    "label": "開始分帳",
+                    "uri": "line://oaMessage/@429bgams/要分帳的人有:"
                     }
                 }
                 ],
                 "flex": 0
             }
-        }
+            }
 
         bubbles.append(bubble)
     
