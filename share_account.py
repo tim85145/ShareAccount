@@ -54,7 +54,7 @@ def get_item_price(event):
     
 def list_all_function(event):
     functions = {'分帳功能':'開始分帳'}
-    base_id = '@429bgams'
+    # base_id = '@429bgams'
     pre_message = '要分帳的人有: '
     bubbles = []
     for function in functions:
@@ -98,8 +98,8 @@ def list_all_function(event):
     flex_message = FlexSendMessage(
         alt_text='請選擇要使用的功能',
         contents={
-            'type': 'carousel',
-            'contents': bubbles
+            "type": "carousel",
+            "contents": bubbles
         })
     
     line_bot_api.reply_message(
