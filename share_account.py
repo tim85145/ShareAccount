@@ -58,6 +58,7 @@ def list_all_function(event):
     pre_message = '要分帳的人有: '
     bubbles = []
     for function in functions:
+        label = functions[function]
         bubble = {
             "type": "bubble",
             "direction": "ltr",
@@ -84,7 +85,7 @@ def list_all_function(event):
                     "height": "sm",
                     "action": {
                     "type": "uri",
-                    "label": functions[function],
+                    "label": label,
                     "uri": f"line://oaMessage/{base_id}/{pre_message}"
                     }
                 }
