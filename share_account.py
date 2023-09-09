@@ -51,7 +51,8 @@ def get_item_price(event):
     message_text = str(event.message.text).lower().split(' ')
     item = message_text[0]
     price = message_text[1]
-    
+
+"""    
 def list_all_function(event):
     functions = {'分帳功能':'開始分帳'}
     # base_id = '@429bgams'
@@ -107,42 +108,43 @@ def list_all_function(event):
     line_bot_api.reply_message(
         event.reply_token,
         [flex_message])
+"""
+        
+"""
+# 預期能在使用者的輸入框放入一些文字
+pre_text = '123測試'
+encoded_message = quote(pre_text)
+oa_message_uri = f'line://oaMessage/{base_id}/?{encoded_message}'
+recipient_id = event.source.user_id
+headers = {
+    'Authorization': f'Bearer {ChannelAccessToken}'
+}
+payload = {
+    'messages': [{'type': 'text', 'text':'觸發互動消息'}],
+    'to': recipient_id,
+    'notificationDisabled': False,
+    'uri': oa_message_uri,
+}
 
-    """
-    # 預期能在使用者的輸入框放入一些文字
-    pre_text = '123測試'
-    encoded_message = quote(pre_text)
-    oa_message_uri = f'line://oaMessage/{base_id}/?{encoded_message}'
-    recipient_id = event.source.user_id
-    headers = {
-        'Authorization': f'Bearer {ChannelAccessToken}'
-    }
-    payload = {
-        'messages': [{'type': 'text', 'text':'觸發互動消息'}],
-        'to': recipient_id,
-        'notificationDisabled': False,
-        'uri': oa_message_uri,
-    }
-    
-    response = requests.post('https://api.line.me/v2/bot/message/push', headers=headers, json=payload)
-    if response.status_code == 200:
-        print('互動消息已觸發成功')
-    else:
-        print('互動消息觸發失敗: ', response.status_code, response.text)
-    
-    print('===============')
+response = requests.post('https://api.line.me/v2/bot/message/push', headers=headers, json=payload)
+if response.status_code == 200:
+    print('互動消息已觸發成功')
+else:
+    print('互動消息觸發失敗: ', response.status_code, response.text)
 
-    url = 'https://line.me/R/oaMessage/@429bgams/要發送的訊息'
-    webbrowser.open(url)
+print('===============')
 
-    
-    response = requests.post('https://line.me/R/oaMessage/@429bgams/要發送的訊息')
-    if response.status_code == 200:
-        print('互動消息已觸發成功')
-    else:
-        print('互動消息觸發失敗: ', response.status_code, response.text)
-    print('===============....')
-    """
+url = 'https://line.me/R/oaMessage/@429bgams/要發送的訊息'
+webbrowser.open(url)
+
+
+response = requests.post('https://line.me/R/oaMessage/@429bgams/要發送的訊息')
+if response.status_code == 200:
+    print('互動消息已觸發成功')
+else:
+    print('互動消息觸發失敗: ', response.status_code, response.text)
+print('===============....')
+"""
     # message_text = str(event.message.text).lower()
     # user = get_or_create_user(event.source.user_id)
     

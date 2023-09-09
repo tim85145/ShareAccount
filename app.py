@@ -9,7 +9,6 @@ app = Flask(__name__)
 
 @app.route("/callback", methods = ['POST'])
 def callback():
-    print('11111111111111111111111111111111111111111111')
     signature = request.headers["X-Line-Signature"]
 
     body = request.get_data(as_text=True)
@@ -48,7 +47,6 @@ def handle_join(event):
 # 文字訊息處理器(每次收到文字訊息時的動作)
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    print('3333333333333333333333333333333333333333333')
     message_text = str(event.message.text).lower()
     if message_text == '~開始分帳~':
         msg = '請告訴我要分帳的有哪些人。'
@@ -66,9 +64,8 @@ def handle_message(event):
         elif event.source.type == 'group':
             get_share_member_from_line_group(event)
     
-    elif message_text == '~有哪些功能~':
-        print('****************************************')
-        list_all_function(event)
+    # elif message_text == '~有哪些功能~':
+    #     list_all_function(event)
 
 @handler.add(PostbackEvent)
 def handle_postback(event):
@@ -78,7 +75,5 @@ def handle_postback(event):
 
 
 if __name__ == '__main__':
-    print('222222222222222222222222222')
     init_db()
-    print('444444444444444444444444444')
     app.run()
