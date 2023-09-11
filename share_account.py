@@ -1,5 +1,4 @@
 from urllib.parse import parse_qsl, quote
-import json
 
 from models.user import Users
 from models.advance import Advance
@@ -189,12 +188,13 @@ def print_share_member_list(event, list):
         ]
     }
 
+    print(str(['body']['contents'][1]['contents']))
     for x in range(len(list)):
+        print(list[x])
         bbl_row['contents'][0]['text'] = f'{x+1}. '
         bbl_row['contents'][1]['text'] = list[x]
         bubble['body']['contents'][1]['contents'].append(bbl_row)
-    print(bbl_row)    
-    print(json.dumps(bbl_row))
+    print("OK")
 
     flex_message = FlexSendMessage(
         alt_text='以下為要分帳的人員名單',
