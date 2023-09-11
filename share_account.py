@@ -1,4 +1,5 @@
 from urllib.parse import parse_qsl, quote
+import json
 
 from models.user import Users
 from models.advance import Advance
@@ -138,7 +139,8 @@ def print_share_member_list(event, list):
             },
             {
                 "type": "box",
-                "layout": "vertical"
+                "layout": "vertical",
+                "contents": []
             }
             ]
         },
@@ -188,10 +190,11 @@ def print_share_member_list(event, list):
     }
 
     for x in range(len(list)):
-        bbl_row['contents'][0]['text'] = f'{x}. '
+        bbl_row['contents'][0]['text'] = f'{x+1}. '
         bbl_row['contents'][1]['text'] = list[x]
         bubble['body']['contents'][1]['contents'].append(bbl_row)
-    print('test')
+    print(bbl_row)    
+    print(json.dumps(bbl_row))
 
     flex_message = FlexSendMessage(
         alt_text='以下為要分帳的人員名單',
