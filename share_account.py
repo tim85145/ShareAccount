@@ -188,6 +188,8 @@ def print_share_member_list(list):
         }
         ]
     }
+
+    print("OK")
     for x in range(len(list)):
         bbl_row['contents'][0]['text'] = f'{x}. '
         bbl_row['contents'][1]['text'] = list[x]
