@@ -40,10 +40,15 @@ def get_share_member_from_line_group(event):
         print('取得群組成員ID列表失敗!!')
 
 def get_share_member_from_line_user(message_text):
-    share_list = message_text.split(':')[1].split(' ')
-    print(str(share_list))
+    share_list = message_text.split(' ')
+    
+    if len(share_list) == 1:
+        return []
+    
     for user_id in share_list:
         get_or_create_user(user_id)
+
+    return share_list
 
 def get_item_price(event):
     message_text = str(event.message.text).lower().split(' ')
@@ -52,7 +57,7 @@ def get_item_price(event):
 
 def list_all_function(event):
     functions = {'分帳功能':'開始分帳'}
-    pre_message = 'test'
+    pre_message = quote('要分帳的人有: ')
     bubbles = []
 
     for function in functions:
