@@ -13,5 +13,5 @@ class Users(Base):
     picture_url = Column(String(length=256), comment='使用者頭貼URL')
     created_time = Column(DateTime, default=func.now(), comment='使用者加入時間')
 
-    user_advance = relationship('Advance', backref='advance')
-    user_share = relationship('Share', backref='share')
+    user_advance = relationship('Advance', backref='user_advance')
+    user_share = relationship('Share', backref='user_share')
