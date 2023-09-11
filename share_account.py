@@ -51,7 +51,7 @@ def get_item_price(event):
 def list_all_function(event):
     functions = {'分帳功能':'開始分帳'}
     pre_message = quote('要分帳的人有: ')
-    base_id = quote(base_id)
+    uri_base_id = quote(base_id)
     bubbles = []
 
     for function in functions:
@@ -80,7 +80,7 @@ def list_all_function(event):
                     "action": {
                         "type": "uri",
                         "label": label,
-                        "uri": f"line://oaMessage/{base_id}/{pre_message}"
+                        "uri": f"line://oaMessage/{uri_base_id}/{pre_message}"
                     }
                 }
                 ]
@@ -112,7 +112,99 @@ def get_share_member_from_line_user(message_text):
     return share_list
 
 def print_share_member_list(list):
-    for member in list:
-        pass
+
+    pre_message = quote('要分帳的人有: ')
+    uri_base_id = quote(base_id)
+
+    bubble = {
+        "type": "bubble",
+        "body": {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+            {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                {
+                    "type": "text",
+                    "text": "分帳人員如下：",
+                    "size": "xl",
+                    "weight": "bold"
+                }
+                ]
+            },
+            {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                {
+                    "type": "box",
+                    "layout": "baseline",
+                    "contents": [
+                    {
+                        "type": "text",
+                        "text": "1. ",
+                        "flex": 1,
+                        "color": "#5B5B5B"
+                    },
+                    {
+                        "type": "text",
+                        "text": "測試",
+                        "flex": 5,
+                        "color": "#5B5B5B"
+                    }
+                    ]
+                }
+                ]
+            }
+            ]
+        },
+        "footer": {
+            "type": "box",
+            "layout": "horizontal",
+            "contents": [
+            {
+                "type": "button",
+                "action": {
+                "type": "uri",
+                "label": "繼續增加",
+                "uri": f"line://oaMessage/{uri_base_id}/{pre_message}"
+                },
+                "height": "sm"
+            },
+            {
+                "type": "button",
+                "action": {
+                "type": "postback",
+                "label": "action",
+                "data": "item_price"
+                },
+                "height": "sm"
+            }
+            ]
+        }
+    }
+    
+    bbl_row = {
+        "type": "box",
+        "layout": "baseline",
+        "contents": [
+        {
+            "type": "text",
+            "text": "1. ",
+            "flex": 1,
+            "color": "#5B5B5B"
+        },
+        {
+            "type": "text",
+            "text": "測試",
+            "flex": 5,
+            "color": "#5B5B5B"
+        }
+        ]
+    }
+    for x in len(list):
+        bbl_row 
 
 
