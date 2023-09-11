@@ -52,7 +52,7 @@ def get_item_price(event):
 
 def list_all_function(event):
     functions = {'分帳功能':'開始分帳'}
-    pre_message = '要分帳的人有: '
+    pre_message = 'test'
     bubbles = []
 
     for function in functions:
