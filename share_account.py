@@ -139,8 +139,7 @@ def print_share_member_list(event, list):
             {
                 "type": "box",
                 "layout": "vertical",
-                "contents": [
-                ]
+                "contents": []
             }
             ]
         },
@@ -193,6 +192,7 @@ def print_share_member_list(event, list):
         bbl_row['contents'][0]['text'] = f'{x}. '
         bbl_row['contents'][1]['text'] = list[x]
         bubble['body']['contents'][1]['contents'].append(bbl_row)
+    print('test')
 
     flex_message = FlexSendMessage(
         alt_text='以下為要分帳的人員名單',
