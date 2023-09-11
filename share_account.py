@@ -176,13 +176,13 @@ def print_share_member_list(list):
         "contents": [
         {
             "type": "text",
-            "text": "1. ",
+            "text": "",
             "flex": 1,
             "color": "#5B5B5B"
         },
         {
             "type": "text",
-            "text": "測試",
+            "text": "",
             "flex": 5,
             "color": "#5B5B5B"
         }
