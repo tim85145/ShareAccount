@@ -138,8 +138,7 @@ def print_share_member_list(event, list):
             },
             {
                 "type": "box",
-                "layout": "vertical",
-                "contents": []
+                "layout": "vertical"
             }
             ]
         },
