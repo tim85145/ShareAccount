@@ -51,7 +51,7 @@ def get_item_price(event):
 def list_all_function(event):
     functions = {'分帳功能':'開始分帳'}
     pre_message = quote('要分帳的人有: ')
-    uri_base_id = quote(base_id)
+    base_id = quote(base_id)
     bubbles = []
 
     for function in functions:
@@ -80,7 +80,7 @@ def list_all_function(event):
                     "action": {
                         "type": "uri",
                         "label": label,
-                        "uri": f"line://oaMessage/{uri_base_id}/{pre_message}"
+                        "uri": f"line://oaMessage/{base_id}/{pre_message}"
                     }
                 }
                 ]
