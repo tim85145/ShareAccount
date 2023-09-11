@@ -39,25 +39,19 @@ def get_share_member_from_line_group(event):
     else:
         print('取得群組成員ID列表失敗!!')
 
-def get_share_member_from_line_user(message_text):
-    share_list = message_text.split(' ')
-    
-    if len(share_list) == 1:
-        return []
-    
-    for user_id in share_list:
-        get_or_create_user(user_id)
-
-    return share_list
-
 def get_item_price(event):
-    message_text = str(event.message.text).lower().split(' ')
-    item = message_text[0]
-    price = message_text[1]
+    pass
+    # message_text = str(event.message.text).lower().split(' ')
+    # item = message_text[0]
+    # price = message_text[1]
+
+
+# 單人現在這
 
 def list_all_function(event):
     functions = {'分帳功能':'開始分帳'}
     pre_message = quote('要分帳的人有: ')
+    base_id = quote(base_id)
     bubbles = []
 
     for function in functions:
@@ -86,7 +80,7 @@ def list_all_function(event):
                     "action": {
                         "type": "uri",
                         "label": label,
-                        "uri": f"line://oaMessage/@429bgams/{pre_message}"
+                        "uri": f"line://oaMessage/{base_id}/{pre_message}"
                     }
                 }
                 ]
@@ -106,8 +100,19 @@ def list_all_function(event):
         event.reply_token,
         [flex_message])
 
+def get_share_member_from_line_user(message_text):
+    share_list = message_text.split(' ')
+    
+    if len(share_list) == 1:
+        return []
+    
+    for user_id in share_list:
+        get_or_create_user(user_id)
 
+    return share_list
 
-def get_expend_item():
-    pass
+def print_share_member_list(list):
+    for member in list:
+        pass
+
 
