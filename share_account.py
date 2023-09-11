@@ -113,7 +113,7 @@ def get_share_member_from_line_user(message_text):
 
     return share_list[1:len(share_list)]
 
-def print_share_member_list(list):
+def print_share_member_list(event, list):
 
     pre_message = quote('要分帳的人有: ')
     uri_base_id = quote(base_id)
@@ -189,10 +189,15 @@ def print_share_member_list(list):
         ]
     }
 
-    print("OK")
     for x in range(len(list)):
         bbl_row['contents'][0]['text'] = f'{x}. '
         bbl_row['contents'][1]['text'] = list[x]
         bubble['body']['contents'][1]['contents'].append(bbl_row)
 
-
+    flex_message = FlexSendMessage(
+        alt_text='以下為要分帳的人員名單',
+        contents=bubble)
+    
+    line_bot_api.reply_message(
+        event.reply_token,
+        [flex_message])
