@@ -1,6 +1,8 @@
 from urllib.parse import parse_qsl, quote
 
 from models.user import Users
+from models.advance import Advance
+from models.share import Share
 from database import db_session
 from line_bot_api import *
 
@@ -138,24 +140,6 @@ def print_share_member_list(list):
                 "type": "box",
                 "layout": "vertical",
                 "contents": [
-                {
-                    "type": "box",
-                    "layout": "baseline",
-                    "contents": [
-                    {
-                        "type": "text",
-                        "text": "1. ",
-                        "flex": 1,
-                        "color": "#5B5B5B"
-                    },
-                    {
-                        "type": "text",
-                        "text": "測試",
-                        "flex": 5,
-                        "color": "#5B5B5B"
-                    }
-                    ]
-                }
                 ]
             }
             ]
@@ -205,6 +189,8 @@ def print_share_member_list(list):
         ]
     }
     for x in len(list):
-        bbl_row 
+        bbl_row['contents'][0]['text'] = f'{x}. '
+        bbl_row['contents'][1]['text'] = list[x]
+        bubble['body']['contents'][1]['contents'].append(bbl_row)
 
 

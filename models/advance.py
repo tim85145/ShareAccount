@@ -15,4 +15,4 @@ class Advance(Base):
     is_paid = Column(Boolean, default=False, comment='是否已墊付(用於統計總分帳金額時不計算已付完的項目)')
     created_time = Column(DateTime, default=func.now(), comment='建立時間')
 
-    advance_share = relationship('share', backref='share')
+    advance_share = relationship('Share', backref='share')
