@@ -8,7 +8,7 @@ from line_bot_api import *
 
 
 def get_or_create_user(user_id):
-    user = db_session.query(Users).filter_by(line_id=user_id).first()
+    user = db_session.query(Users).filter_by(user_id=user_id).first()
     if not user:
         try:
             profile = line_bot_api.get_profile(user_id)

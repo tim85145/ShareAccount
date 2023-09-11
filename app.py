@@ -48,12 +48,13 @@ def handle_join(event):
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     message_text = str(event.message.text).lower()
-    if message_text == '~開始分帳~':
-        msg = '請告訴我要分帳的有哪些人。'
+    if message_text == '~有哪些功能~':
+        msg = '請告訴我要分帳的人有哪些。'
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=msg)
         )
+        list_all_function(event)
             
     elif '要分帳的人有: ' in message_text:
         if event.source.type == 'user':
@@ -63,15 +64,14 @@ def handle_message(event):
 
         elif event.source.type == 'group':
             get_share_member_from_line_group(event)
-    
-    elif message_text == '~有哪些功能~':
-        list_all_function(event)
+
 
 @handler.add(PostbackEvent)
 def handle_postback(event):
     data = dict(parse_qsl(event.postback.data))
     if data.get('action') == 'item_price':
-        get_item_price(event)
+        print('action == item_price')
+        # get_item_price(event)
 
 
 if __name__ == '__main__':
