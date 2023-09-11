@@ -105,13 +105,13 @@ def list_all_function(event):
 def get_share_member_from_line_user(message_text):
     share_list = message_text.split(' ')
     
-    if len(share_list) == 1:
+    if share_list[1] == '':
         return []
     
     for user_id in share_list:
         get_or_create_user(user_id)
 
-    return share_list
+    return share_list[1:len(share_list)]
 
 def print_share_member_list(list):
 
