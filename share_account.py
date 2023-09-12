@@ -117,6 +117,32 @@ def print_share_member_list(event, list):
 
     pre_message = quote('要分帳的人有: ')
     uri_base_id = quote(base_id)
+    name_list_component = []
+
+    for x in range(len(list)):
+        index = f'{x}. '
+        name = list[x]
+
+        bbl_row = {
+            "type": "box",
+            "layout": "baseline",
+            "contents": [
+            {
+                "type": "text",
+                "text": index,
+                "flex": 1,
+                "color": "#5B5B5B"
+            },
+            {
+                "type": "text",
+                "text": name,
+                "flex": 5,
+                "color": "#5B5B5B"
+            }
+            ]
+        }
+
+        name_list_component.append(bbl_row)
 
     bubble = {
         "type": "bubble",
@@ -139,7 +165,7 @@ def print_share_member_list(event, list):
             {
                 "type": "box",
                 "layout": "vertical",
-                "contents": []
+                "contents": name_list_component
             }
             ]
         },
@@ -169,33 +195,6 @@ def print_share_member_list(event, list):
         }
     }
     
-    bbl_row = {
-        "type": "box",
-        "layout": "baseline",
-        "contents": [
-        {
-            "type": "text",
-            "text": "",
-            "flex": 1,
-            "color": "#5B5B5B"
-        },
-        {
-            "type": "text",
-            "text": "",
-            "flex": 5,
-            "color": "#5B5B5B"
-        }
-        ]
-    }
-
-    print(str(['body']['contents'][1]['contents']))
-    for x in range(len(list)):
-        print(list[x])
-        bbl_row['contents'][0]['text'] = f'{x+1}. '
-        bbl_row['contents'][1]['text'] = list[x]
-        bubble['body']['contents'][1]['contents'].append(bbl_row)
-    print("OK")
-
     flex_message = FlexSendMessage(
         alt_text='以下為要分帳的人員名單',
         contents=bubble)
