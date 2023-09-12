@@ -103,6 +103,7 @@ def list_all_function(event):
         [flex_message])
 
 def set_sharing_group(item_id, users_id):
+    print(item_id)
     item = db_session.query(Share).filter_by(item_id=item_id).first()
     if not item:
         for user_id in users_id:
