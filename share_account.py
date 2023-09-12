@@ -102,25 +102,41 @@ def list_all_function(event):
         event.reply_token,
         [flex_message])
 
-def get_share_member_from_line_user(message_text):
+def set_sharing_group(item_id, users_id):
+    item = db_session.query(Share).filter_by(item_id=item_id).first()
+    if not item:
+        for user_id in users_id:
+            item = Share(item_id=item_id, share_user=user_id)
+
+            db_session.add(item)
+        db_session.commit()
+
+    items = db_session.query(Share).filter_by(item_id=item_id).all()
+    for x in items:
+        print(f"{x.item_id} {x.share_user}")
+
+def get_share_member_from_line_user(event):
+    message_text = str(event.message.text).lower()
+    item_id = event.source.user_id
     share_list = message_text.split(' ')
-    
     if share_list[1] == '':
         return []
     
+    share_list = share_list[1:len(share_list)]
     for user_id in share_list:
         get_or_create_user(user_id)
+    set_sharing_group(item_id=item_id, users_id=share_list)
 
-    return share_list[1:len(share_list)]
+    return share_list
 
 def print_share_member_list(event, list=[]):
 
-    pre_message = quote('要分帳的人有: ')
+    pre_message = quote('還要分帳的人有: ')
     uri_base_id = quote(base_id)
     name_list_component = []
 
     for x in range(len(list)):
-        index = f'{x}. '
+        index = f'{x+1}. '
         name = list[x]
 
         bbl_row = {
@@ -186,8 +202,8 @@ def print_share_member_list(event, list=[]):
                 "type": "button",
                 "action": {
                 "type": "postback",
-                "label": "action",
-                "data": "item_price"
+                "label": "確定",
+                "data": "action=item_price"
                 },
                 "height": "sm"
             }
