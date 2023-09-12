@@ -60,7 +60,7 @@ def handle_message(event):
         if event.source.type == 'user':
             share_list = get_share_member_from_line_user(message_text)
             # print(str(share_list))
-            print_share_member_list(share_list)
+            print_share_member_list(event, share_list)
 
         elif event.source.type == 'group':
             get_share_member_from_line_group(event)
