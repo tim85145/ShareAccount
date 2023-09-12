@@ -113,7 +113,7 @@ def get_share_member_from_line_user(message_text):
 
     return share_list[1:len(share_list)]
 
-def print_share_member_list(event, list):
+def print_share_member_list(event, list=[]):
 
     pre_message = quote('要分帳的人有: ')
     uri_base_id = quote(base_id)
