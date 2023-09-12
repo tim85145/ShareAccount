@@ -104,12 +104,12 @@ def list_all_function(event):
 
 def set_sharing_group(item_id, users_id):
     # item = db_session.query(Share).filter_by(item_id=item_id).first()
-    if not item:
-        for user_id in users_id:
-            item = Share(item_id=item_id, share_user=user_id)
+    # if not item:
+    for user_id in users_id:
+        item = Share(item_id=item_id, share_user=user_id)
 
-            db_session.add(item)
-        db_session.commit()
+        db_session.add(item)
+    db_session.commit()
 
     items = db_session.query(Share).filter_by(item_id=item_id).all()
     for x in items:
