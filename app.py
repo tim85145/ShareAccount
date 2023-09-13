@@ -50,6 +50,11 @@ def handle_message(event):
     message_text = str(event.message.text).lower()
     if message_text == '~有哪些功能~':
         list_all_function(event)
+        # msg = '請告訴我要分帳的人有哪些。'
+        # line_bot_api.reply_message(
+        #     event.reply_token,
+        #     TextSendMessage(text=msg)
+        # )
             
     elif '要分帳的人有: ' in message_text:
         if event.source.type == 'user':

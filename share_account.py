@@ -125,7 +125,7 @@ def get_share_member_from_line_user(event):
     share_list = share_list[1:len(share_list)]
     for user_id in share_list:
         get_or_create_user(user_id)
-    set_sharing_group(item_id=item_id, users_id=share_list)
+    # set_sharing_group(item_id=item_id, users_id=share_list)
 
     return share_list
 
@@ -219,8 +219,3 @@ def print_share_member_list(event, list=[]):
         event.reply_token,
         [flex_message])
 
-# msg = '請告訴我要分帳的人有哪些。'
-#         line_bot_api.reply_message(
-#             event.reply_token,
-#             TextSendMessage(text=msg)
-#         )
