@@ -218,3 +218,9 @@ def print_share_member_list(event, list=[]):
     line_bot_api.reply_message(
         event.reply_token,
         [flex_message])
+
+# msg = '請告訴我要分帳的人有哪些。'
+#         line_bot_api.reply_message(
+#             event.reply_token,
+#             TextSendMessage(text=msg)
+#         )
